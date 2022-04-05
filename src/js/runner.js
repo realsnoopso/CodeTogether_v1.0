@@ -32,26 +32,19 @@ function mission2_1() {
 	출력(덧셈나눗셈);
 }
 
-function mission2_2() {
-	// 대각선의 길이 = a제곱 + b제곱을 루트 씌운 것
-	// 위 공식을 이용해 좌표간 차이를 구한 후 a와 b에 대입
-	// https://ko.wikihow.com/%EB%91%90-%EC%A0%90-%EC%82%AC%EC%9D%B4%EC%9D%98-%EA%B1%B0%EB%A6%AC-%EA%B5%AC%ED%95%98%EB%8A%94-%EB%B2%95
-	const [입력항목1, 입력항목2] = arguments;
-	const 입력항목1_x = 입력항목1.split(",")[0];
-	const 입력항목1_y = 입력항목1.split(",")[1];
-	const 입력항목2_x = 입력항목2.split(",")[0];
-	const 입력항목2_y = 입력항목2.split(",")[1];
-	const 좌표간거리 = Math.sqrt((입력항목1_x - 입력항목2_x)**2) + ((입력항목1_y - 입력항목2_y)**2);
+function mission2_2(입력항목1, 입력항목2) {
+	const aX = 입력항목1.split(",")[0];
+	const aY = 입력항목1.split(",")[1];
+	const bX = 입력항목2.split(",")[0];
+	const bY = 입력항목2.split(",")[1];
+	const 좌표간거리 = Math.sqrt((aX - bX)**2) + ((aY - bY)**2);
 	출력(좌표간거리);
 }
 
-function mission2_3() {
-	const [입력항목1, 입력항목2] = arguments;
+function mission2_3(입력항목1, 입력항목2) {
 	const 반지름 = parseInt(입력항목1);
 	const 높이 = parseInt(입력항목2);
-	// 원의 넓이 = 반지름 x 반지름 x 원주율
 	const 넓이 = 반지름**2*3.14
-	// 원뿔의 부피 = (원의넓이)*(높이)/3
 	const 부피 = 넓이*높이/3
 	if (typeof(높이) === "string") {
 		출력("숫자를 입력하세요");
@@ -62,17 +55,10 @@ function mission2_3() {
 	}
 }
 
-function mission2_4() {
-	const [입력항목1] = arguments;
+function mission2_4(입력항목1) {
 	const 주문갯수 = parseInt(입력항목1);
-	if (typeof(주문갯수) === "string") {
-		출력("숫자를 입력하세요");
-	} else {
-		// 1. 25000 에서 20%를 뺀 가격
-		const 구입가격 = (25000-(25000*0.2))*주문갯수
-		// 2. 배송료 계산 (1회만 2500, 2회째부터 1500)
-		const 배송료 = 2500 + 1500*주문갯수
-		const 총가격 = (구입가격*주문갯수).toLocaleString("ko-KR") 
-		출력(총가격)
-	}
+	const 구입가격 = (25000-(25000*0.2))*주문갯수
+	const 배송료 = 2500+1500*주문갯수
+	const 총가격 = (구입가격+배송료).toLocaleString("ko-KR") 
+	typeof(주문갯수) === "string"? 출력("숫자를 입력하세요"):출력(총가격);
 }
