@@ -44,7 +44,7 @@ function mission2_2(입력항목1, 입력항목2) {
 function mission2_3(입력항목1, 입력항목2) {
 	const 반지름 = parseInt(입력항목1);
 	const 높이 = parseInt(입력항목2);
-	const 넓이 = 반지름**2*3.14
+	const 넓이 = 반지름**2*Math.PI;
 	const 부피 = 넓이*높이/3
 	if (typeof(높이) === "string") {
 		출력("숫자를 입력하세요");
@@ -61,4 +61,25 @@ function mission2_4(입력항목1) {
 	const 배송료 = 2500+1500*주문갯수
 	const 총가격 = (구입가격+배송료).toLocaleString("ko-KR") 
 	typeof(주문갯수) === "string"? 출력("숫자를 입력하세요"):출력(총가격);
+}
+
+function mission3_1(a, b) {
+	const sum = (x, y) => x+y;
+	const powWithSum = (x) => Math.pow(x, 2);
+	출력 (powWithSum(sum(a, b)));
+}
+
+function mission3_2(입력항목1) {
+	const removeLastChar = (x) => x.substring(0, x.length-1);
+	출력 (removeLastChar(입력항목1));
+}
+
+function mission3_2(입력항목1) {
+	const removeSpecificChar = (x) => x.replace("$", "");
+	출력 (removeSpecificChar(입력항목1));
+}
+
+function mission3_3(반지름, 높이값) {
+	const calculate = (x, y) => (Math.pow(x, 2) * Math.PI) * 2 + ((2 * x * Math.PI) * y)
+	출력 (calculate(반지름, 높이값));
 }
